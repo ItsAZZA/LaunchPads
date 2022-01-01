@@ -4,6 +4,7 @@ main: com.itsazza.launchpads.LaunchPads
 api-version: 1.13
 authors: [ ItsAZZA ]
 website: https://bcsn.us
+softdepend: [ Kotlin ]
 libraries:
   - 'org.jetbrains.kotlin:kotlin-stdlib:1.6.0'
 commands:

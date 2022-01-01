@@ -27,6 +27,6 @@ default:
       delay: 1
     # Message which is sent to the player
     message:
-      text: "&5Boom!"
+      text: "&5&lBoom!"
 noeffects:
   type: REGULAR
