@@ -1,0 +1,7 @@
+name: LaunchPads
+version: '${version}'
+main: com.itsazza.launchpads.LaunchPads
+api-version: 1.13
+prefix: LaunchPads
+authors: [ ItsAZZA ]
+website: https://bcsn.us

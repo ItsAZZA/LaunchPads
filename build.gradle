@@ -1,0 +1,25 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.6.0"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+group = 'com.itsazza'
+version = '2.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://oss.sonatype.org/content/groups/public/' }
+}
+
+dependencies {
+    compileOnly 'org.jetbrains.kotlin:kotlin-stdlib:1.6.0'
+    compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
+    implementation 'org.bstats:bstats-bukkit:2.2.1'
+}
+
+shadowJar {
+    relocate('org.bstats', 'com.itsazza.resources.bstats')
+    archiveName("LaunchPads.jar")
+    minimize()
+}
