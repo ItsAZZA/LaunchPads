@@ -1,5 +1,6 @@
 package com.itsazza.launchpads.pads.effects
 
+import org.bukkit.Bukkit
 import org.bukkit.Particle
 import org.bukkit.Sound
 
@@ -14,6 +15,7 @@ enum class EffectType(val dataPoints: List<String>, private val dataSize: Int = 
         return when (this) {
             MESSAGE -> MessageEffect(data[0])
             PARTICLE -> {
+                if (Bukkit.getVersion().contains("1.8")) return null
                 val particle = Particle.values().firstOrNull{ it.name == data[0].uppercase() } ?: return null
                 val amount = data[1].toInt()
                 val delay = data[2].toInt()
