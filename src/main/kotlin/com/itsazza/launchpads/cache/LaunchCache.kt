@@ -17,7 +17,7 @@ object LaunchCache {
 
     fun check(uuid: UUID): Boolean {
         val value = launches.getIfPresent(uuid) ?: return true
-        if (value > System.currentTimeMillis()) return false
+        if (value >= System.currentTimeMillis()) return false
         launches.invalidate(uuid)
         return true
     }

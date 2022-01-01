@@ -1,0 +1,32 @@
+# Create different launchpad types
+# The key is the name of the launchpad used in signs
+# Any effect can be removed to disable it
+
+default:
+  # The type of the launchpad
+  # Possible values: REGULAR, LOOK
+  # "REGULAR" launchpads launch players based on velocities
+  # -> <x>,<y>,<z>
+  # "LOOK" launchpads launch players based on the direction they look
+  # -> <power>,<offset> which works great with 2,1 for example
+  type: REGULAR
+  # Different effects the launchpad can have
+  effects:
+    # Sound effect where type is the sound effect name
+    # and volume & pitch are the volume and pitch of the sound effect
+    sound:
+      type: ENTITY_FIREWORK_ROCKET_SHOOT
+      volume: 1.0
+      pitch: 1.0
+    # Particle effect where type is the particle effect name
+    # and amount is the amount of particles
+    # and delay is the delay between each particle in ticks
+    particle:
+      type: FLAME
+      amount: 1
+      delay: 1
+    # Message which is sent to the player
+    message:
+      text: "&5Boom!"
+noeffects:
+  type: REGULAR

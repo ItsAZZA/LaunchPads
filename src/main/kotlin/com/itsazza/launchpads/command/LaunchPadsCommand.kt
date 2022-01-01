@@ -25,7 +25,7 @@ object LaunchPadsCommand : CommandExecutor {
         }
         when (args[0].lowercase(Locale.getDefault())) {
             "reload" -> {
-                instance.reloadConfig()
+                instance.reload()
                 sender.sendMessage("§6Reloaded config!")
                 return true
             }
