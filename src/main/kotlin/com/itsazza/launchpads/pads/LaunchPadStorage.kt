@@ -40,7 +40,7 @@ object LaunchPadStorage {
                     }
                     val created = effectType.create(data)
                     if (created == null) {
-                        Bukkit.getLogger().warning("Failed to create effect $effectKey. Please check your config.")
+                        Bukkit.getLogger().warning("Failed to create effect \"$effectKey\" for launchpad $key. Please check your config.")
                         continue
                     }
                     effects += created
