@@ -35,12 +35,15 @@ object LaunchPadStorage {
                 for (effectKey in effectKeys) {
                     val effectType = EffectType.values().firstOrNull { it.name == effectKey.uppercase() } ?: continue
                     val data = mutableListOf<String>()
-                    for (point in effectType.dataPoints) {
+                    for (point in effectType.dataPoints.keys) {
                         data += section.getString("$effectKey.$point") ?: continue
                     }
                     val created = effectType.create(data)
                     if (created == null) {
-                        Bukkit.getLogger().warning("Failed to create effect \"$effectKey\" for launchpad $key. Please check your config.")
+                        Bukkit.getLogger().warning(
+                            "Failed to create effect \"$effectKey\" for launchpad $key. This type needs the following values in config: ${
+                                effectType.dataPoints.map { "${it.key} (${it.value.toString().lowercase()})" }.joinToString(", ") }"
+                        )
                         continue
                     }
                     effects += created
@@ -48,7 +51,10 @@ object LaunchPadStorage {
 
                 launchPads[key] = LaunchPad(launchdPadType, effects)
             }
-        }.also { Bukkit.getLogger().info("[LaunchPads] Loaded ${launchPads.size} LaunchPad ${if(launchPads.size > 1) "types" else "type"} in $it ms.") }
+        }.also {
+            Bukkit.getLogger()
+                .info("[LaunchPads] Loaded ${launchPads.size} LaunchPad ${if (launchPads.size > 1) "types" else "type"} in $it ms.")
+        }
     }
 
     fun get(name: String): LaunchPad? = launchPads[name]
